@@ -27,10 +27,10 @@ public class CommentController {
     return commentServices.postComment(comment);
   }
 
-  @DeleteMapping("/delete/{id}")
-  public void deleteComment(@PathVariable String id) {
-
-    commentServices.deleteComment(id);
+  @DeleteMapping("/delete")
+  public void deleteComment(@RequestBody comment comment) {
+    System.out.print("deleting comment: " + comment);
+    commentServices.deleteComment(comment);
   }
 
   @GetMapping

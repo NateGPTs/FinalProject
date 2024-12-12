@@ -20,10 +20,12 @@ public class post {
   private String id;
   private List<comment> comments;
   private String userId;
+  private String username;
   private String title;
   private String description;
   private String movieName;
   private String movieId;
+  private boolean flagged = false;
 
   @CreatedDate
   private LocalDateTime createdAt;

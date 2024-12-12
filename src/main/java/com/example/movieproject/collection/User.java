@@ -1,5 +1,6 @@
 package com.example.movieproject.collection;
 
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,9 +22,12 @@ public class User {
   private String firstName;
   private String lastName;
   private String password;
-  private List<post> post;
-  private List<comment> comments;
+  private List<String> following = new ArrayList<>();
+  private List<String> followers = new ArrayList<>();
+  private List<post> post = new ArrayList<>();
+  private List<comment> comments = new ArrayList<>();
   private String description;
-
+  private boolean modPerms = false;
+  private Watchlist watchlist = new Watchlist();
 
 }

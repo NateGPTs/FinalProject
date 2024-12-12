@@ -21,7 +21,6 @@ public class AuthController {
 
   private final UserService userService;
 
-
   public AuthController(UserService userService, AuthServices authServices) {
     this.userService = userService;
   }
@@ -74,7 +73,7 @@ public class AuthController {
   public ResponseEntity<?> checkSession(HttpSession session) {
     String userId = (String) session.getAttribute("USER_ID");
     if (userId != null) {
-      User user = userService.getUserByUsername(userId);
+      User user = userService.getUserById(userId);  // Use getUserById instead
       return ResponseEntity.ok(user);
     }
     return ResponseEntity.status(401).body("Not logged in");

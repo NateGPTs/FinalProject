@@ -6,6 +6,7 @@ import com.example.movieproject.collection.User;
 import com.example.movieproject.repository.PostRepository;
 import com.example.movieproject.repository.UserRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,6 +60,16 @@ public class UserServiceImpl implements UserService {
   public User getUserByUsername(String username) {
     return userRepository.findByUsername(username);
   }
+
+  @Override
+  public String getUsernameById(String id) {
+    System.out.println("user services fetching username by Id: the id is:" + id);
+    Optional<User> getUserById = userRepository.findById(id);
+
+    return getUserById.map(User::getUsername).orElse(null);
+  }
+
+
 
 
 }

@@ -1,11 +1,11 @@
 package com.example.movieproject.collection;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,17 +13,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "comment")
-public class comment {
+public class Watchlist {
 
   @Id
   private String id;
-  private String postId;
-  private String comment;
-  private String userId;
-  private String username;
+  private List<String> movies = new ArrayList<>();
 
-  @CreatedDate
-  private LocalDateTime createdAt;
 
 }

@@ -51,6 +51,7 @@ public class PostServices {
   public post createPost(post post) {
     System.out.println("Received post: " + post.toString());
     System.out.println("MovieId: " + post.getMovieId());
+    System.out.println("userId of post: " + post.getUserId());
     List<post> currentPosts = userRepository.findById(post.getUserId()).get().getPost();
     System.out.println("currentPosts: " + currentPosts);
     currentPosts.add(post);

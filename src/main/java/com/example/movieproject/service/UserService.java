@@ -24,4 +24,6 @@ public interface UserService {
   User getUserByUsername(String username);
 
 
+  String getUsernameById(String id);
+
 }

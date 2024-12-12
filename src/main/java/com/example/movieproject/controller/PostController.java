@@ -2,7 +2,9 @@ package com.example.movieproject.controller;
 
 import com.example.movieproject.collection.comment;
 import com.example.movieproject.collection.post;
+import com.example.movieproject.repository.PostRepository;
 import com.example.movieproject.service.PostServices;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,10 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class PostController {
 
   private final PostServices postServices;
+  private final PostRepository postRepository;
 
   @Autowired
-  public PostController(PostServices postServices) {
+  public PostController(PostServices postServices, PostRepository postRepository) {
     this.postServices = postServices;
+    this.postRepository = postRepository;
   }
 
   @GetMapping("/sortedPC")
@@ -61,6 +65,14 @@ public class PostController {
       e.printStackTrace();
       throw e;
     }
+  }
+
+  @GetMapping("/{postId}")
+  public post getPost(@PathVariable String postId) {
+
+    post post = postRepository.findById(postId).get();
+    System.out.println("post contents from getPost: " + post.toString());
+    return post;
   }
 
 
